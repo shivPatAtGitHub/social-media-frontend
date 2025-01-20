@@ -10,7 +10,7 @@ const AdminLogin = ({ onLogin }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/admin/adminLogin",
+        "https://api-3w-social-media-backend.netlify.app/admin/adminLogin",
         {
           userName,
           password,

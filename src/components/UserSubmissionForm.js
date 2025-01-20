@@ -22,7 +22,7 @@ const UserSubmissionForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/addUser",
+        "https://api-3w-social-media-backend.netlify.app/user/addUser",
         formData,
         {
           headers: {

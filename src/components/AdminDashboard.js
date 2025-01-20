@@ -7,7 +7,9 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/admin/getData");
+        const response = await axios.get(
+          "https://api-3w-social-media-backend.netlify.app/admin/getData"
+        );
         setSubmissions(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
