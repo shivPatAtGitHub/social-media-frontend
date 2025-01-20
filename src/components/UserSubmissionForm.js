@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const UserSubmissionForm = () => {
@@ -21,12 +21,17 @@ const UserSubmissionForm = () => {
     });
 
     try {
-      await axios.post("http://localhost:5000/api/submit", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:3000/user/addUser",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       alert("Submission successful!");
+      console.log(response.data);
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Submission failed. Please try again.");
@@ -62,6 +67,5 @@ const UserSubmissionForm = () => {
     </form>
   );
 };
-
 
 export default UserSubmissionForm;

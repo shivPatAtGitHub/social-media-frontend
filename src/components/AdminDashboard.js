@@ -5,18 +5,16 @@ const AdminDashboard = () => {
   const [submissions, setSubmissions] = useState([]);
 
   useEffect(() => {
-    const fetchSubmissions = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/submissions"
-        );
+        const response = await axios.get("http://localhost:3000/admin/getData");
         setSubmissions(response.data);
       } catch (error) {
-        console.error("Error fetching submissions:", error);
+        console.error("Error fetching data:", error);
       }
     };
 
-    fetchSubmissions();
+    fetchData();
   }, []);
 
   return (
@@ -34,7 +32,7 @@ const AdminDashboard = () => {
           {submissions.map((submission, index) => (
             <tr key={index}>
               <td>{submission.name}</td>
-              <td>{submission.socialHandle}</td>
+              <td>{submission.handle}</td>
               <td>
                 {submission.images.map((image, idx) => (
                   <a
@@ -45,7 +43,7 @@ const AdminDashboard = () => {
                   >
                     <img
                       src={image}
-                      alt={`User submission ${index + 1} - ${idx + 1}`}
+                      alt={`Submission ${index + 1} - ${idx + 1}`}
                       style={{
                         width: "50px",
                         height: "50px",

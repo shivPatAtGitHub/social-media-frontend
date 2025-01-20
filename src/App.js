@@ -1,14 +1,19 @@
-import UserSubmissionForm from "./components/UserSubmissionForm.js"
-import AdminDashboard from "./components/AdminDashboard.js"
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import UserSubmissionForm from "./components/UserSubmissionForm";
+import AdminLogin from "./components/AdminLogin";
+import AdminDashboard from "./components/AdminDashboard";
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <h1>Social Media Task</h1>
-      <UserSubmissionForm />
-      <AdminDashboard />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<UserSubmissionForm />} />
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
